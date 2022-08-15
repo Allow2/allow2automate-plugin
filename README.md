@@ -70,14 +70,14 @@ You can also set timers, do remote calls to web services/etc.
 ## state persistence
 
 Both your Control Interface (React Component for tab content on the render process) and your Service Mechanism (on the main process)
-have access to, get nbotified of changes to, and are able to send instructions to update the configuration state in the allow2automate
-main store. This should really be your primary mechanism for communication as it serves to both communicate configurationsand also
+have access to, get notified of changes to, and are able to send instructions to update the configuration state in the allow2automate
+main store. This should really be your primary mechanism for communication as it serves to both communicate configurations and also
 persist them over restarts of the allow2automate app.
 
 ## inter-process communication (IPC)
 
 Allow2automate provides a bi-directional ipc channel for all plugins, it is an element of the plugin component mechanism.
-You also needn't worry about clashes as all ipc comms you initiate from either end is namespaced automatically, so you
+You also needn't worry about clashes as all ipc comms you initiate from either end are namespaced automatically, so you
 shouldn't clash with anyone else.
 
 # Cloning this project as a starting point

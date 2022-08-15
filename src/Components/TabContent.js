@@ -30,7 +30,8 @@ class TabContent extends Component {
 	const plugin = this.props.plugin;
         return (
             <div>
-                {plugin.name}
+                <h2>{plugin.name}</h2>
+                Present your configuration panel here
             </div>
         );
     }

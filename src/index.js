@@ -15,6 +15,7 @@
 
 'use strict';
 import TabContent from './Components/TabContent';
+import Wemo from "../../allow2automate-wemo/src/Wemo";
 
 function plugin(context) {
 
@@ -23,24 +24,33 @@ function plugin(context) {
     };
 
     //
-    // onLoad (optional): called on the main process when this plugin is loaded
+    // onLoad (optional - but recommended): called on the main process when this plugin is loaded
     //
-    // plugin.onLoad = function() {
-    //     // nop
-    // };
+    plugin.onLoad = function(loadState) {
+
+        // you can locally hold state if you want
+        // state = loadState;
+
+        // Also set up any ipc message handling here
+        context.ipc.on('myCustomMessage', function(event, params) {
+            console.log('processing my custom message', params);
+        });
+    };
 
     //
     // onSetEnabled (optional): called by the electron main process when this plugin is enabled/disabled
     //
     // plugin.onSetEnabled = function(enabled) {
-    //     // nop
+    //    isEnabled = enabled
+    //    // should probably stop/start processing events here, timers, etc - whatever makes sense for your plugin
+    //    // to be "enabled" or "disabled".
     // };
 
     //
     // onUnload (optional): called if the user is (removing) deleting the plugin, use this to clean up before the plugin disappears
     //
     // plugin.onUnload = function(callback) {
-    //     // nop
+    //     // stop all timers, disconnect listeners, etc
     //     callback(null);
     // };
 
