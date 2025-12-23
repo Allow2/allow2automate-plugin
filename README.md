@@ -10,7 +10,8 @@ There are a few steps involved in setting up a new plugin and testing and publis
 2. you can use this project as a basis for your plugin
 3. once you get it compiling, you can manually insert it into the plugins directory for allow2automate
 and start allow2automate. It will detect your plugin and load it as if it was loaded from the published plugins directory.
-4. 
+4. Develop your plugin
+5. When ready to release your plugin, you publish it by publishing to npm with the tag "allow2automate"
 
 # Plugin structure
 
@@ -23,7 +24,8 @@ would install your plugin, this loads into the main electron process immediately
 You can set things up ready to go, but don't really have much to do yet.
 
 Once the user switches to your tab, the Component side of the plugin is loaded and presented to allow them to alter their
-configuration. Here you can present interfaces to allow them to remotely authenticate with the web service, set up rules and
+configuration. Here you can present interfaces to allow them to remotely authenticate with the web service (using whatever
+authentication mechanism the web service requires), set up rules and
 assign children from their account.
 
 When you persist those changes, they are fed to your Service Mechanism in the back end, and that's where you actually implement
@@ -40,7 +42,7 @@ persisted state upon which the service mechanism relies to enforce behaviour. Yo
 to directly communicate with your Service Mechanism component, but this really should be used sparingly.
 
 Be very aware that the component is transient, it is only loaded generally when the user actually
-switches to your plugin tab, it also can be unloaded if they switch to a different tab or closes the
+switches to your plugin tab, it also can be unloaded if they switch to a different tab or close the
 allow2automate window. For that reason, and because it is in the render process of the electron app,
 it should not set up any persistent behaviours, timers, background processes or anything really other
 than simple displaying status and providing interactive controls for users to configure your plugin.
@@ -52,7 +54,7 @@ All the control mechanism stuff needs to live in the Service Mechanism of your p
 Each plugin must export a function named "plugin" that takes a single argument, being a "context" object.
 The context object will pass in several mechanisms and functions.
 
-This is where you should set up your actual comms mechanisms. You listen to changes in state here, both
+This is where you should set up your actual control mechanisms. You listen to changes in state here, both
 from the user changing configurations, and from Allow2 triggering events, such as telling you gaming time is now over
 You can also tell allow2automate about usage in whatever mechanism you have linked and Allow2 will use this to
 track usage.
