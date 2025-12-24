@@ -1,5 +1,5 @@
 {
-  "name": "allow2automate-plugin",
+  "name": "@allow2/allow2automate-plugin",
   "shortName": "plugin",
   "version": "0.0.1",
   "description": "Base template to build your own plugins",
@@ -18,14 +18,50 @@
     "type": "git",
     "url": "https://github.com/Allow2/allow2automate-plugin"
   },
+  "bugs": {
+    "url": "https://github.com/Allow2/allow2automate-plugin/issues"
+  },
+  "homepage": "https://github.com/Allow2/allow2automate-plugin#readme",
   "allow2Token": "<INSERT TOKEN HERE>",
   "keywords": [
     "allow2automate",
     "allow2",
-    "template"
+    "template",
+    "plugin",
+    "starter",
+    "development"
   ],
-  "author": "Allow2",
-  "license": "Apache-2.0",
+  "author": {
+    "name": "Allow2",
+    "url": "https://allow2.com"
+  },
+  "license": "MIT",
+  "allow2automate": {
+    "plugin": true,
+    "pluginId": "allow2automate-plugin",
+    "displayName": "Plugin Template",
+    "category": "Utilities",
+    "permissions": [
+      "configuration"
+    ],
+    "minAppVersion": "2.0.0",
+    "api": {
+      "actions": [
+        {
+          "id": "configure",
+          "name": "Configure Plugin",
+          "description": "Configure plugin settings"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "stateChanged",
+          "name": "State Changed",
+          "description": "Triggered when plugin state changes"
+        }
+      ]
+    }
+  },
   "dependencies": {
     "@babel/runtime": "^7.13.9"
   },
